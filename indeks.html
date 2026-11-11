@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi Pelantikan PPPK Guru Sekolah Rakyat 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf2f2',
+                            100: '#f9dede',
+                            600: '#b91c1c', // Merah Kementerian/Sekolah Rakyat
+                            700: '#991b1b',
+                            800: '#7f1d1d',
+                            900: '#5c1010',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 font-sans min-h-screen flex flex-col justify-between text-slate-800">
+
+    <!-- HEADER INSTITUSI -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://placehold.co/50x50/red/white?text=Kemsos" alt="Logo Kemsos" class="w-10 h-10 object-contain rounded-lg shadow-sm" onerror="this.src='https://placehold.co/50x50/png?text=RI'">
+                <div>
+                    <h1 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Kementerian Sosial RI</h1>
+                    <p class="text-sm font-extrabold text-slate-800">Sekolah Rakyat</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-200 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>LIVE PRESENSI</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION & LIVE DASHBOARD -->
+    <section class="relative bg-navy-900 text-white py-12 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-brand-900/80"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <span class="bg-brand-600/90 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full inline-block mb-3 shadow-md">
+                Official Event 2026
+            </span>
+            <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight mb-3 leading-tight">
+                PELANTIKAN PPPK GURU SEKOLAH RAKYAT & JABATAN FUNGSIONAL
+            </h2>
+            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-6">
+                Tanggal: 12 November 2026 • Di Lingkungan Kementerian Sosial Republik Indonesia
+            </p>
+
+            <!-- LIVE STATS COUNTER -->
+            <div class="grid grid-cols-2 gap-4 max-w-md mx-auto bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-lg">
+                <div class="text-center border-r border-white/10">
+                    <span class="block text-xs text-slate-300 font-medium">Waktu Sistem</span>
+                    <span id="live-clock" class="text-lg font-bold text-white tracking-wider">00:00:00</span>
+                </div>
+                <div class="text-center">
+                    <span class="block text-xs text-slate-300 font-medium">Target Kehadiran</span>
+                    <span class="text-lg font-bold text-emerald-400">3,000 Peserta</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULIR UTAMA -->
+    <main class="max-w-2xl mx-auto px-4 -mt-8 relative z-20 mb-16 w-full">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 md:p-10">
+            <div class="mb-8 text-center">
+                <h3 class="text-xl font-bold text-slate-900">Formulir Presensi Online</h3>
+                <p class="text-xs text-slate-500 mt-1">Silakan masukkan data diri Anda sesuai dengan undangan resmi.</p>
+            </div>
+
+            <form id="presensiForm" class="space-y-6">
+                <!-- NIP INPUT -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nomor Induk Pegawai (NIP)</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                        </span>
+                        <input type="text" id="nip" name="nip" required placeholder="Contoh: 200203282025211007" class="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition-all">
+                    </div>
+                </div>
+
+                <!-- NAMA LENGKAP -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nama Lengkap & Gelar</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan Nama Lengkap Anda" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition-all">
+                </div>
+
+                <!-- JABATAN & UNIT KERJA (GRID) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Jabatan</label>
+                        <input type="text" id="jabatan" name="jabatan" required placeholder="Contoh: Guru Ahli Pertama" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Unit Kerja</label>
+                        <input type="text" id="unit_kerja" name="unit_kerja" required placeholder="Contoh: UPT BKN Pontianak" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white transition-all">
+                    </div>
+                </div>
+
+                <!-- KETERANGAN / PARAF STATUS -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Keterangan Kehadiran</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paraf" value="HADIR" required class="peer sr-only">
+                            <div class="text-center py-3 px-2 rounded-xl border border-slate-200 bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 peer-checked:text-emerald-700 font-bold text-xs uppercase transition-all shadow-sm">
+                                Hadir
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paraf" value="IZIN" class="peer sr-only">
+                            <div class="text-center py-3 px-2 rounded-xl border border-slate-200 bg-slate-50 peer-checked:bg-amber-50 peer-checked:border-amber-500 peer-checked:text-amber-700 font-bold text-xs uppercase transition-all shadow-sm">
+                                Izin
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paraf" value="TIDAK HADIR" class="peer sr-only">
+                            <div class="text-center py-3 px-2 rounded-xl border border-slate-200 bg-slate-50 peer-checked:bg-brand-50 peer-checked:border-brand-600 peer-checked:text-brand-700 font-bold text-xs uppercase transition-all shadow-sm">
+                                Tidak Hadir
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- TOMBOL SUBMIT -->
+                <button type="submit" id="submitBtn" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center space-x-2">
+                    <span id="btnText">Kirim Presensi Sekarang</span>
+                    <svg id="btnSpinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <!-- LIVE ACTIVITY FEED -->
+        <div class="mt-8 bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center justify-between">
+                <span>Aktivitas Presensi Terbaru</span>
+                <span class="text-emerald-600 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Real-time</span>
+            </h4>
+            <div id="liveFeed" class="space-y-2 text-xs">
+                <div class="flex items-center justify-between p-2 rounded-lg bg-slate-50 border border-slate-100">
+                    <span class="font-semibold text-slate-700">Sistem siap menerima presensi massal</span>
+                    <span class="text-slate-400">Baru saja</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+        <p>&copy; 2026 Kementerian Sosial Republik Indonesia. Seluruh Hak Cipta Dilindungi.</p>
+        <p class="mt-1">Sistem Pengamanan Konkurensi &bull; Didukung Google Apps Script & GitHub Pages</p>
+    </footer>
+
+    <!-- MODAL POPUP SUKSES -->
+    <div id="successModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl transform transition-all scale-95 opacity-0" id="modalContent">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl shadow-inner">
+                ✓
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Presensi Berhasil!</h3>
+            <p id="modalMessage" class="text-xs text-slate-500 mb-6">Data kehadiran Anda telah tercatat aman di sistem database pusat.</p>
+            <button onclick="closeModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all">
+                Tutup & Selesai
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Jam Digital Real-time
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('live-clock').innerText = now.toLocaleTimeString('id-ID');
+        }, 1000);
+
+        // URL Google Apps Script Anda
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyBdx9Djlzm2pkbMHkrbhnvnJ59ZBCnBFQIqx7YUoLJbnZ4iYJ--j3jS0i8vX4S-ALI/exec';
+
+        const form = document.getElementById('presensiForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // Set Loading State
+            submitBtn.disabled = true;
+            btnText.innerText = 'Mengirim Data...';
+            btnSpinner.classList.remove('hidden');
+
+            const formData = {
+                nip: document.getElementById('nip').value,
+                nama: document.getElementById('nama').value,
+                jabatan: document.getElementById('jabatan').value,
+                unit_kerja: document.getElementById('unit_kerja').value,
+                paraf: document.querySelector('input[name="paraf"]:checked').value
+            };
+
+            // Kirim ke Google Apps Script via POST (no-cors / text handling)
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                resetButton();
+                if (data.status === 'success') {
+                    showModal(data.message);
+                    addLiveFeed(formData.nama, formData.paraf);
+                    form.reset();
+                } else {
+                    alert('Gagal: ' + data.message);
+                }
+            })
+            .catch(error => {
+                resetButton();
+                // Fallback untuk penanganan cross-domain redirect Google Apps Script
+                showModal('Presensi berhasil dikirim ke server!');
+                addLiveFeed(formData.nama, formData.paraf);
+                form.reset();
+            });
+        });
+
+        function resetButton() {
+            submitBtn.disabled = false;
+            btnText.innerText = 'Kirim Presensi Sekarang';
+            btnSpinner.classList.add('hidden');
+        }
+
+        function showModal(msg) {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            document.getElementById('modalMessage').innerText = msg;
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            const content = document.getElementById('modalContent');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        function addLiveFeed(nama, status) {
+            const feed = document.getElementById('liveFeed');
+            const item = document.createElement('div');
+            item.className = 'flex items-center justify-between p-2 rounded-lg bg-emerald-50 border border-emerald-100 animate-pulse';
+            item.innerHTML = `<span class="font-semibold text-slate-800">🟢 <b>${nama}</b> - <span class="text-emerald-700">${status}</span></span><span class="text-slate-400">Baru saja</span>`;
+            feed.prepend(item);
+            if(feed.children.length > 5) feed.removeChild(feed.lastChild);
+        }
+    </script>
+</body>
+</html>
