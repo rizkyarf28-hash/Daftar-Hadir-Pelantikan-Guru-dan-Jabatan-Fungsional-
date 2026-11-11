@@ -110,52 +110,31 @@
         <div class="w-full lg:w-7/12 space-y-6">
             
             <!-- Hero Graphic Banner -->
-            <div class="glass rounded-3xl p-6 relative overflow-hidden bg-gradient-to-r from-sky-50 to-white flex items-center min-h-[160px] shadow-sm border border-white">
-                <div class="absolute right-0 top-0 w-1/3 h-full opacity-20 pointer-events-none">
-                    <img src="056018700_1761911146-Sekolah_Rakyat.jpeg" alt="Background" class="w-full h-full object-cover object-left rounded-r-3xl" style="mask-image: linear-gradient(to right, transparent, black); -webkit-mask-image: linear-gradient(to right, transparent, black);">
+            <div class="glass rounded-3xl p-6 sm:p-8 relative overflow-hidden bg-gradient-to-r from-slate-50 via-white to-sky-50/50 flex items-center min-h-[160px] shadow-sm border border-white">
+                <!-- Elegant Abstract Background -->
+                <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-3xl">
+                    <!-- Grid Pattern -->
+                    <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#0f172a 1px, transparent 1px); background-size: 24px 24px;"></div>
+                    <!-- Glowing Orbs -->
+                    <div class="absolute -right-24 -top-24 w-96 h-96 bg-gradient-to-br from-kemensos-400/30 to-blue-600/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+                    <div class="absolute right-10 -bottom-32 w-80 h-80 bg-gradient-to-tr from-amber-400/20 to-kemensos-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
+                    <!-- Sleek accent line -->
+                    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white/80 to-transparent transform skew-x-12 translate-x-10"></div>
                 </div>
                 
-                <div class="absolute -right-10 -top-10 text-sky-200 opacity-30 transform rotate-12 pointer-events-none">
-                    <i class="fa-solid fa-id-card-clip text-9xl"></i>
+                <!-- Subtle Watermark Icon -->
+                <div class="absolute -right-4 top-1/2 -translate-y-1/2 text-kemensos-600/5 transform -rotate-12 pointer-events-none">
+                    <i class="fa-solid fa-landmark-dome text-[180px]"></i>
                 </div>
                 
-                <div class="relative z-10 w-full sm:w-2/3">
-                    <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-extrabold mb-3 uppercase tracking-wider shadow-sm border border-emerald-200/50">
-                        <i class="fa-solid fa-circle-check"></i> Data Terhubung (2394 Peserta)
+                <div class="relative z-10 w-full sm:w-3/4">
+                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-kemensos-700 to-kemensos-600 text-white px-3.5 py-1.5 rounded-full text-[9px] sm:text-[10px] font-black mb-4 uppercase tracking-widest shadow-md shadow-kemensos-500/20 border border-kemensos-500/50">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span> Sistem Terhubung (2394 Peserta)
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black text-slate-800 mb-2 leading-tight">Selamat Datang,<br><span class="text-kemensos-600">Calon PPPK 2026!</span></h2>
-                    <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">Silakan lakukan konfirmasi kehadiran Anda pada form elektronik di bawah ini.</p>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-800 mb-2.5 leading-tight tracking-tight">Selamat Datang,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-kemensos-600 to-blue-800 drop-shadow-sm">Calon PPPK 2026!</span></h2>
+                    <p class="text-xs sm:text-sm text-slate-500 font-semibold leading-relaxed max-w-md">Lakukan konfirmasi kehadiran presensi elektronik Anda untuk acara Pelantikan Jabatan Fungsional.</p>
                 </div>
             </div>
-
-            <!-- Tab Navigation -->
-            <div class="flex p-1.5 glass rounded-2xl gap-2 w-max shadow-sm border border-white">
-                <button onclick="switchTab('db')" id="tab-db" class="px-6 py-2.5 rounded-xl text-sm font-bold bg-kemensos-500 text-white shadow-md transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-search"></i> Pencarian Otomatis
-                </button>
-                <button onclick="switchTab('manual')" id="tab-manual" class="px-6 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-800 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square"></i> Input Manual
-                </button>
-            </div>
-
-            <!-- Database Search Panel -->
-            <div id="panel-db" class="glass rounded-3xl p-6 sm:p-8 shadow-xl border border-white">
-                <div class="mb-6">
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Cari Data Presensi (NIP / Nama):</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-magnifying-glass text-kemensos-500"></i>
-                        </div>
-                        <input type="text" id="searchInput" autocomplete="off" placeholder="Ketik minimal 3 huruf/angka..." 
-                               class="w-full pl-11 pr-10 py-4 bg-white border-2 border-slate-100 focus:border-kemensos-500 rounded-2xl text-base font-bold text-slate-700 shadow-sm outline-none transition-all placeholder-slate-300">
-                        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-rose-500 transition-colors">
-                            <i class="fa-solid fa-circle-xmark text-lg"></i>
-                        </button>
-                        
-                        <!-- Autocomplete Results -->
-                        <div id="autocompleteList" class="absolute w-full mt-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-100 max-h-72 overflow-y-auto hidden z-30 divide-y divide-slate-100 custom-scrollbar"></div>
-                    </div>
-                </div>
 
                 <!-- Preview Selected Data -->
                 <div id="previewCard" class="hidden transform scale-95 opacity-0 transition-all duration-300 origin-top">
@@ -757,7 +736,7 @@
         // =====================================================================
         // KONFIGURASI SERVER: GANTI URL DI BAWAH INI DENGAN URL WEB APP ANDA
         // =====================================================================
-        const SCRIPT_URL = 'ISI_DENGAN_URL_WEB_APP_ANDA_DISINI';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbze3efkgXi-jD-irHtk84yOkhvs6dtcACJ1is2I1Aoc1VqllWL_c-Z3YyWH5ga9Jtk/exec';
 
         function processAttendanceSubmission(user, method, status, source) {
              const entry = {
