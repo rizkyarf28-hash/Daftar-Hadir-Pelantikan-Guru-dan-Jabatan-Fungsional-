@@ -738,7 +738,31 @@
         // =====================================================================
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbze3efkgXi-jD-irHtk84yOkhvs6dtcACJ1is2I1Aoc1VqllWL_c-Z3YyWH5ga9Jtk/exec';
 
+        // FITUR 1: Anti-Double Submit Blocker
+        function checkDoubleSubmit(nip) {
+            const logs = getLog();
+            const existing = logs.find(l => l.nip === nip);
+            if (existing) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Presensi Ditolak',
+                    html: `Peserta dengan NIP <b>${nip}</b><br>sudah tercatat hadir pada pukul <b>${existing.time} WIB</b>.<br><br><span class="text-xs text-rose-500 font-bold">Data ganda tidak diizinkan.</span>`,
+                    confirmButtonColor: '#0f172a',
+                    confirmButtonText: 'Kembali',
+                    customClass: {
+                        popup: 'rounded-2xl border-t-4 border-rose-500 shadow-2xl',
+                        title: 'font-black text-slate-800'
+                    }
+                });
+                return true; // Ditolak
+            }
+            return false; // Lolos
+        }
+
         function processAttendanceSubmission(user, method, status, source) {
+            // Cek apakah NIP sudah ada di log lokal
+            if (checkDoubleSubmit(user.nip)) return;
+
              const entry = {
                 ...user,
                 time: new Date().toLocaleTimeString('id-ID'),
@@ -750,8 +774,12 @@
         }
 
         function processManualSubmission() {
+            const nipVal = document.getElementById('manNip').value;
+            // Cek apakah NIP sudah ada di log lokal
+            if (checkDoubleSubmit(nipVal)) return;
+
             const entry = {
-                nip: document.getElementById('manNip').value,
+                nip: nipVal,
                 nama: document.getElementById('manNama').value.toUpperCase(),
                 jabatan: document.getElementById('manJabatan').value,
                 unit_kerja: document.getElementById('manUnit').value,
