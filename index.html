@@ -68,19 +68,34 @@
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
+    
+        @keyframes slideDownFade {
+            0% { opacity: 0; transform: translateY(-20px) scale(0.95); max-height: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; border-width: 0; }
+            100% { opacity: 1; transform: translateY(0) scale(1); max-height: 200px; padding-top: 14px; padding-bottom: 14px; margin-bottom: 12px; border-width: 1px; }
+        }
+        .animate-slide-down {
+            animation: slideDownFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            overflow: hidden;
+        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body class="font-sans text-slate-800 antialiased relative">
+    <audio id="successSound" src="https://www.myinstants.com/media/sounds/success-bell.mp3" preload="auto"></audio>
 
     <!-- Header Panel -->
-    <header class="glass sticky top-0 z-40 border-b border-white/50">
+    <header class="glass relative z-40 border-b border-white/50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                <!-- Logos -->
-                <div class="flex items-center gap-3 bg-white/80 p-2 rounded-2xl shadow-sm border border-slate-100">
-                    <img src="logo.jpg" alt="Logo Kemensos" class="h-10 sm:h-12 w-auto logo-img rounded-md">
-                    <div class="h-8 w-px bg-slate-300 mx-1"></div>
-                    <img src="sekolah-rakyat-1755762115949.png" alt="Logo Sekolah Rakyat" class="h-10 sm:h-12 w-auto logo-img">
+                <!-- Emblem / Badge Pengganti Logo -->
+                <div class="flex items-center gap-3 bg-gradient-to-r from-sky-900 to-blue-900 text-white px-4 py-3 rounded-2xl shadow-md border border-sky-700/50">
+                    <div class="w-10 h-10 rounded-xl bg-kemensos-gold text-slate-900 flex items-center justify-center font-black text-lg shadow-inner">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <div class="text-[10px] uppercase tracking-widest text-sky-200 font-extrabold">Kementerian Sosial RI</div>
+                        <div class="text-xs sm:text-sm font-black text-white">Program Sekolah Rakyat</div>
+                    </div>
                 </div>
                 
                 <div class="text-center sm:text-left mt-2 sm:mt-0">
@@ -910,7 +925,7 @@
                     
                     const item = document.createElement('div');
                     // Add animation class only to the very first item if we just added it
-                    const animClass = index === 0 ? "animate-[fade-in_0.5s_ease-out]" : "";
+                    const animClass = index === 0 ? "animate-slide-down" : "";
                     
                     item.className = `bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-start gap-3 hover:shadow-md transition-shadow ${animClass}`;
                     item.innerHTML = `
